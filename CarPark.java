@@ -4,17 +4,21 @@ import java.util.List;
 
 /**
  * Manages a collection of ParkingSlot objects.
- * Can add/remove slots, find slots or cars, and list slots.
+ * Provides operations to create, add, remove, list slots, and locate parked cars.
  */
 public class CarPark {
+    /**
+     * Internal list of all parking slots in this car park.
+     */
     private List<ParkingSlot> slots = new ArrayList<>();
 
     /**
-     * Constructs a CarPark with a given number of staff and visitor slots.
-     * Staff slots are labeled S01… and visitor slots V01….
+     * Constructs a CarPark populated with the given number of staff-only
+     * and visitor-only slots. Staff slots are labeled S01, S02, …;
+     * visitor slots are labeled V01, V02, ….
      *
-     * @param staffSlots   number of staff-only slots
-     * @param visitorSlots number of visitor-only slots
+     * @param staffSlots   number of staff-only slots to create
+     * @param visitorSlots number of visitor-only slots to create
      */
     public CarPark(int staffSlots, int visitorSlots) {
         for (int i = 1; i <= staffSlots; i++) {
@@ -28,10 +32,10 @@ public class CarPark {
     }
 
     /**
-     * Adds a new slot if its ID is unique.
+     * Adds a new parking slot if no existing slot has the same ID.
      *
      * @param slot the ParkingSlot to add
-     * @return true if added, false if a slot with same ID exists
+     * @return true if the slot was added; false if a slot with the same ID already exists
      */
     public boolean addSlot(ParkingSlot slot) {
         if (findSlotById(slot.getId()) != null) {
@@ -42,10 +46,10 @@ public class CarPark {
     }
 
     /**
-     * Removes an unoccupied slot by ID.
+     * Deletes an unoccupied slot identified by its ID.
      *
-     * @param id the slot ID to delete
-     * @return true if removed, false if not found or occupied
+     * @param id the identifier of the slot to delete
+     * @return true if the slot was found and deleted; false if not found or if occupied
      */
     public boolean deleteSlot(String id) {
         ParkingSlot slot = findSlotById(id);
@@ -56,18 +60,18 @@ public class CarPark {
     }
 
     /**
-     * Retrieves all slots.
+     * Returns a snapshot list of all parking slots in this car park.
      *
-     * @return list of all ParkingSlot objects
+     * @return a new List containing all ParkingSlot objects
      */
     public List<ParkingSlot> getAllSlots() {
         return new ArrayList<>(slots);
     }
 
     /**
-     * Deletes all unoccupied slots.
+     * Deletes every slot that is currently unoccupied.
      *
-     * @return true if at least one slot was deleted
+     * @return true if at least one unoccupied slot was deleted; false otherwise
      */
     public boolean deleteAllUnoccupied() {
         boolean removedAny = false;
@@ -82,10 +86,10 @@ public class CarPark {
     }
 
     /**
-     * Finds a slot by its ID.
+     * Finds a parking slot by its unique identifier.
      *
-     * @param id slot identifier
-     * @return ParkingSlot or null if not found
+     * @param id the slot ID to search for
+     * @return the ParkingSlot with the matching ID, or null if none exists
      */
     public ParkingSlot findSlotById(String id) {
         for (ParkingSlot slot : slots) {
@@ -97,10 +101,10 @@ public class CarPark {
     }
 
     /**
-     * Finds which slot a car is parked in by its registration.
+     * Searches all slots for a parked car with the given registration number.
      *
-     * @param registrationNumber car registration
-     * @return ParkingSlot containing the car, or null if none
+     * @param registrationNumber the registration number of the car to find
+     * @return the ParkingSlot where the car is parked, or null if the car is not in any slot
      */
     public ParkingSlot findCar(String registrationNumber) {
         for (ParkingSlot slot : slots) {
