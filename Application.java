@@ -90,19 +90,11 @@ public class Application {
 
     private void addParkingSlot() {
         System.out.println("--- Add Parking Slot ---");
-        // Check input format
         String id = readSlotId("Enter slot ID (e.g. A01): ");
-        System.out.print("Enter slot type (staff or visitor): ");
-        String typeInput = scanner.nextLine().trim().toLowerCase();
-        ParkingSlot.SlotType type;
-        if ("staff".equals(typeInput)) {
-            type = ParkingSlot.SlotType.STAFF;
-        } else if ("visitor".equals(typeInput)) {
-            type = ParkingSlot.SlotType.VISITOR;
-        } else {
-            System.out.println("Invalid slot type. Must be 'staff' or 'visitor'.");
-            return;
-        }
+        int code = readSlotTypeCode("Enter slot type (1=staff, 0=visitor): ");
+        ParkingSlot.SlotType type =
+            (code == 1) ? ParkingSlot.SlotType.STAFF : ParkingSlot.SlotType.VISITOR;
+
         boolean success = carPark.addSlot(new ParkingSlot(id, type));
         System.out.println(success
             ? "Slot added successfully."
@@ -252,6 +244,21 @@ public class Application {
             }
             System.out.println(
                 "Incorrect format, please enter the correct registration format e.g. T1234");
+        }
+    }
+
+    /**
+     * Reads a slot type code from the user: 1 for staff, 0 for visitor.
+     * Repeats until a valid integer (0 or 1) is entered.
+     */
+    private int readSlotTypeCode(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            String line = scanner.nextLine().trim();
+            if ("1".equals(line) || "0".equals(line)) {
+                return Integer.parseInt(line);
+            }
+            System.out.println("Incorrect value, please enter 1 for staff or 0 for visitor.");
         }
     }
 }
