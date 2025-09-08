@@ -91,7 +91,7 @@ public class Application {
     private void addParkingSlot() {
         System.out.println("--- Add Parking Slot ---");
         String id = readSlotId("Enter slot ID (e.g. A01): ");
-        int code = readSlotTypeCode("Enter slot type (1=staff, 0=visitor): ");
+        int code = readSlotTypeCode("Enter slot type (1 = staff, 0 = visitor): ");
         ParkingSlot.SlotType type =
             (code == 1) ? ParkingSlot.SlotType.STAFF : ParkingSlot.SlotType.VISITOR;
 
