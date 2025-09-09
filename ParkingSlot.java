@@ -1,4 +1,10 @@
 /**
+ * @author Tung Tran <103432596>
+ * @version JDK 21
+ * Class COS70006 Tuesday 18:30
+ */
+
+/**
  * Represents a parking slot in the car park.
  * Each slot has a unique identifier, a type (staff or visitor),
  * and may hold at most one Car at a time.
