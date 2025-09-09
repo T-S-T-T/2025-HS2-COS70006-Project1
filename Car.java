@@ -1,6 +1,12 @@
 import java.time.LocalDateTime;
 
 /**
+ * @author Tung Tran <103432596>
+ * @version JDK 21
+ * Class COS70006 Tuesday 18:30
+ */
+
+/**
  * Represents a car that can be parked in a parking slot.
  * Each Car has a registration number, an owner name,
  * a flag indicating staff status, and a timestamp of when it was parked.
