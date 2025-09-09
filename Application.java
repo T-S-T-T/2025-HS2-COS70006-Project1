@@ -5,6 +5,12 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
+ * @author Tung Tran <103432596>
+ * @version JDK 21
+ * Class COS70006 Tuesday 18:30
+ */
+
+/**
  * Console-based application to manage a car park.
  * Handles user input/output and delegates business logic to CarPark,
  * ParkingSlot, and Car classes.
