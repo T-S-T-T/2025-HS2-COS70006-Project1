@@ -3,6 +3,12 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
+ * @author Tung Tran <103432596>
+ * @version JDK 21
+ * Class COS70006 Tuesday 18:30
+ */
+
+/**
  * Manages a collection of ParkingSlot objects.
  * Provides operations to create, add, remove, list slots, and locate parked cars.
  */
